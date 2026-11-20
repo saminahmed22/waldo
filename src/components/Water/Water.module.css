@@ -1,0 +1,47 @@
+.water {
+  position: relative;
+  isolation: isolate;
+}
+
+.waves {
+  height: 100%;
+  width: 100%;
+
+  background-image: url("../../assets/waves.gif");
+  background-size: auto 100px;
+  background-repeat: repeat;
+  opacity: 0.8;
+
+  image-rendering: pixelated;
+
+  position: absolute;
+  z-index: 4;
+
+  pointer-events: none;
+}
+
+/* Level stylings */
+.level {
+  height: 100%;
+  width: 100%;
+
+  position: absolute;
+}
+
+.levelOne {
+  background: rgba(62, 163, 240, 0.4);
+
+  z-index: 1;
+}
+
+.levelTwo {
+  background: rgba(62, 163, 240, 0.6);
+
+  z-index: 2;
+}
+
+.levelThree {
+  background: rgba(62, 163, 240, 0.8);
+
+  z-index: 3;
+}
