@@ -30,9 +30,9 @@ export default function Water() {
         fishArr.push(
           <Fish
             name={fishName}
-            key={`${fishName}_${index}_${layer}`}
-            top={`${getRandomNum(top - 75)}px`}
-            left={`${getRandomNum(left - 75)}px`}
+            key={`${fishName}_${index}_${layer}_${crypto.randomUUID()}`}
+            top={`${getRandomNum(top - 75)}`}
+            left={`${getRandomNum(left - 75)}`}
             angle={`${getRandomNum(360)}`}
           />,
         );
@@ -43,9 +43,9 @@ export default function Water() {
           fishArr.push(
             <Fish
               name={fishName}
-              key={`${fishName}_${index}_${layer}`}
-              top={`${getRandomNum(top - 75)}px`}
-              left={`${getRandomNum(left - 75)}px`}
+              key={`${fishName}_${index}_${layer}_${crypto.randomUUID()}`}
+              top={`${getRandomNum(top - 75)}`}
+              left={`${getRandomNum(left - 75)}`}
               angle={`${getRandomNum(360)}`}
             />,
           );
