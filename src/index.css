@@ -1,0 +1,19 @@
+*,
+#root,
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+#root,
+html,
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+
+  max-height: 100vh;
+  max-width: 100vw;
+}
