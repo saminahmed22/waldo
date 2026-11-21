@@ -1,16 +1,83 @@
 import styles from "./Fish.module.css";
 
-export default function Fish({ name, top = "0px", left = "0px", angle = "0" }) {
+// Hooks
+import { useState, useEffect, useRef } from "react";
+
+// Helpers
+import getViewPortSize from "../../helpers/getViewPortSize";
+import { animatedPoints } from "happy-dom/lib/PropertySymbol";
+
+export default function Fish({
+  name,
+  top = "0px",
+  left = "0px",
+  angle = "90",
+}) {
   if (!name) {
     throw new Error("No name has been provided.");
   }
+
+  // Refs
+  const fishRef = useRef();
+
+  const thresholds = useRef({
+    topStart: Number(top),
+    topEnd: Number(top) + 75,
+    leftStart: Number(left),
+    leftEnd: Number(left) + 75,
+  });
+
+  // Effects
+  useEffect(() => {
+    // fishRef.current.animate(
+    //   [
+    //     // key frames
+    //     { transform: "translateY(0vw)" },
+    //     { transform: "translateY(-100vw)" },
+    //   ],
+    //   {
+    //     // sync options
+    //     duration: 10000,
+    //     iterations: Infinity,
+    //   },
+    // );
+
+    //       θ = arctan(h / w)
+    // 18.4°
+    // Blue angle = 2θ
+    // 36.9°
+    // Yellow angle = 180° − 2θ
+
+    const { top, left } = getViewPortSize();
+
+    const cornerAngle = Math.atan2(top, left) * 180;
+
+    const boundaries = 180 - cornerAngle;
+
+    const normalizedAngle = ((angle + 180) % 360) - 180;
+
+    // const sideAngles = 2 * arctan;
+
+    // const vertAngles = 180 - sideAngles;
+
+    console.log({
+      top,
+      left,
+      cornerAngle,
+      boundaries,
+      // sideAngles,
+      // vertAngles,
+      angle,
+      normalizedAngle,
+    });
+  }, [left, top, angle]);
 
   const url = new URL(`../../assets/fishies/${name}/anim.gif`, import.meta.url)
     .href;
 
   const styleObj = {
-    top,
-    left,
+    top: `${top}px`,
+    left: `${left}px`,
     rotate: `${angle}deg`,
   };
 
@@ -20,6 +87,7 @@ export default function Fish({ name, top = "0px", left = "0px", angle = "0" }) {
       src={url}
       alt={`Image of a ${name}`}
       style={styleObj}
+      ref={fishRef}
       draggable="false"
     />
   );
