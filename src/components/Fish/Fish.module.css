@@ -1,13 +1,23 @@
+.wrapper {
+  position: absolute;
+
+  display: grid;
+  place-items: center;
+}
+
+.fish {
+  position: relative;
+}
+
+.wrapper,
 .fish {
   height: 75px;
   width: 75px;
 
   cursor: pointer;
-
-  position: absolute;
 }
 
-.fish:hover {
+.wrapper:hover .fish {
   filter: drop-shadow(2px 0 0 rgb(0, 255, 30))
     drop-shadow(-2px 0 0 rgb(0, 255, 30)) drop-shadow(0 2px 0 rgb(0, 255, 30))
     drop-shadow(0 -2px 0 rgb(0, 255, 30));
